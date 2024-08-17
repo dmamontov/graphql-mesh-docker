@@ -1,0 +1,5 @@
+/node_modules/
+.mesh/
+.idea/
+yarn-error.log
+.DS_Store

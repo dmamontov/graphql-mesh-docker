@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "grpc-pool": ["./node_modules/@dmamontov/graphql-mesh-grpc-pool-handler"],
+      "type-defs": ["./node_modules/@dmamontov/graphql-mesh-type-defs-transform"],
+      "resolve-to-by-stitch": ["./node_modules/@dmamontov/graphql-mesh-resolve-to-by-stitch-transform"],
+      "resolve-to-by-delegate": ["./node_modules/@dmamontov/graphql-mesh-resolve-to-by-delegate-transform"],
+      "prune-config": ["./node_modules/@dmamontov/graphql-mesh-prune-config-transform"],
+      "replace-config": ["./node_modules/@dmamontov/graphql-mesh-replace-config-transform"],
+      "modify-result": ["./node_modules/@dmamontov/graphql-mesh-modify-result-transform"],
+      "errors-formatter": ["./node_modules/@dmamontov/graphql-mesh-errors-formatter-plugin"],
+      "extended-logger": ["./node_modules/@dmamontov/graphql-mesh-extended-logger-plugin"],
+      "cache-utils": ["./node_modules/@dmamontov/graphql-mesh-cache-utils-plugin"],
+      "cache-document": ["./node_modules/@dmamontov/graphql-mesh-document-cache-plugin"],
+      "cache-response": ["./node_modules/@dmamontov/graphql-mesh-response-cache-plugin"],
+      "constraint": ["./node_modules/@dmamontov/graphql-mesh-constraint-plugin"],
+      "public-schema": ["./node_modules/@dmamontov/graphql-mesh-public-schema-plugin"],
+      "health-checks": ["./node_modules/@dmamontov/graphql-mesh-health-checks-plugin"],
+      "metrics-prometheus": ["./node_modules/@dmamontov/graphql-mesh-prometheus-plugin"],
+      "trace-opentelemetry": ["./node_modules/@dmamontov/graphql-mesh-opentelemetry-plugin"],
+      "oauth2-proxy-user": ["./node_modules/@dmamontov/graphql-mesh-oauth2-proxy-user-plugin"],
+      "x-api-key-auth": ["./node_modules/@dmamontov/graphql-mesh-x-api-key-auth-plugin"],
+      "audit-log": ["./node_modules/@dmamontov/graphql-mesh-audit-log-plugin"]
+    }
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
+  "include": ["**/*", "**/.*"],
+  "exclude": ["node_modules/*", ".mesh/*", "build/*", "specs/*"]
+}

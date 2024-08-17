@@ -1,0 +1,168 @@
+diff --git a/node_modules/@graphql-mesh/runtime/cjs/useSubschema.js b/node_modules/@graphql-mesh/runtime/cjs/useSubschema.js
+index 2bc7252..92fc8ea 100644
+--- a/node_modules/@graphql-mesh/runtime/cjs/useSubschema.js
++++ b/node_modules/@graphql-mesh/runtime/cjs/useSubschema.js
+@@ -1,6 +1,6 @@
+ "use strict";
+ Object.defineProperty(exports, "__esModule", { value: true });
+-exports.useSubschema = useSubschema;
++exports.useSubschema = void 0;
+ const graphql_1 = require("graphql");
+ const graphql_jit_1 = require("graphql-jit");
+ const core_1 = require("@envelop/core");
+@@ -39,7 +39,7 @@ const getIntrospectionOperationType = (0, utils_2.memoize1)(function getIntrospe
+ });
+ function getExecuteFn(subschema) {
+     const compiledQueryCache = new WeakMap();
+-    const transformedDocumentNodeCache = new WeakMap();
++    const transformedDocumentNodeCache = new Map();
+     return function subschemaExecute(args) {
+         const originalRequest = {
+             document: args.document,
+@@ -118,20 +118,38 @@ function getExecuteFn(subschema) {
+           executor = createBatchingExecutor(executor);
+         }
+         */
+-        const transformationContext = {};
+-        const transformedRequest = (0, utils_1.applyRequestTransforms)(originalRequest, delegationContext, transformationContext, subschema.transforms);
+-        const cachedTransfomedDocumentNode = transformedDocumentNodeCache.get(originalRequest.document);
++        let transformationContext = {
++            contextMap: new WeakMap(),
++        };
++        const key = (0, graphql_1.print)(originalRequest.document) +
++            '@' +
++            JSON.stringify(originalRequest.variables || []);
++        let transformedRequest = {
++            ...originalRequest,
++        };
++        const cachedTransfomedDocumentNode = transformedDocumentNodeCache.get(key);
+         if (cachedTransfomedDocumentNode) {
+-            transformedRequest.document = cachedTransfomedDocumentNode;
++            transformedRequest.document = cachedTransfomedDocumentNode.document;
++            transformationContext = cachedTransfomedDocumentNode.transformationContext;
+         }
+         else {
+-            transformedDocumentNodeCache.set(originalRequest.document, transformedRequest.document);
++            transformedRequest = (0, utils_1.applyRequestTransforms)(originalRequest,
++                // @ts-ignore
++                delegationContext, transformationContext, subschema.transforms);
++            transformedDocumentNodeCache.set(key, {
++                document: transformedRequest.document,
++                transformationContext,
++            });
+         }
+         return (0, utils_1.mapMaybePromise)(executor(transformedRequest), function handleResult(originalResult) {
+             if ((0, utils_2.isAsyncIterable)(originalResult)) {
+-                return (0, core_1.mapAsyncIterator)(originalResult, singleResult => (0, utils_1.applyResultTransforms)(singleResult, delegationContext, transformationContext, subschema.transforms));
++                return (0, core_1.mapAsyncIterator)(originalResult, singleResult => (0, utils_1.applyResultTransforms)(singleResult,
++                    // @ts-ignore
++                    delegationContext, transformationContext, subschema.transforms));
+             }
+-            const transformedResult = (0, utils_1.applyResultTransforms)(originalResult, delegationContext, transformationContext, subschema.transforms);
++            const transformedResult = (0, utils_1.applyResultTransforms)(originalResult,
++                // @ts-ignore
++                delegationContext, transformationContext, subschema.transforms);
+             return transformedResult;
+         });
+     };
+@@ -151,15 +169,12 @@ function useSubschema(subschema) {
+             setSchema(subschema.transformedSchema);
+         },
+         onExecute({ setExecuteFn }) {
+-            setExecuteFn(
+-            // @ts-expect-error the typed execution args dont match regular execution types
+-            executeFn);
++            setExecuteFn(executeFn);
+         },
+         onSubscribe({ setSubscribeFn }) {
+-            setSubscribeFn(
+-            // @ts-expect-error the typed execution args dont match regular execution types
+-            executeFn);
++            setSubscribeFn(executeFn);
+         },
+     };
+     return plugin;
+ }
++exports.useSubschema = useSubschema;
+diff --git a/node_modules/@graphql-mesh/runtime/esm/useSubschema.js b/node_modules/@graphql-mesh/runtime/esm/useSubschema.js
+index c0b8e37..46790db 100644
+--- a/node_modules/@graphql-mesh/runtime/esm/useSubschema.js
++++ b/node_modules/@graphql-mesh/runtime/esm/useSubschema.js
+@@ -1,4 +1,4 @@
+-import { BREAK, visit } from 'graphql';
++import { BREAK, visit, print } from 'graphql';
+ import { compileQuery, isCompiledQuery } from 'graphql-jit';
+ import { mapAsyncIterator } from '@envelop/core';
+ import { applyRequestTransforms, applyResultTransforms, mapMaybePromise, } from '@graphql-mesh/utils';
+@@ -36,7 +36,7 @@ const getIntrospectionOperationType = memoize1(function getIntrospectionOperatio
+ });
+ function getExecuteFn(subschema) {
+     const compiledQueryCache = new WeakMap();
+-    const transformedDocumentNodeCache = new WeakMap();
++    const transformedDocumentNodeCache = new Map();
+     return function subschemaExecute(args) {
+         const originalRequest = {
+             document: args.document,
+@@ -115,20 +115,38 @@ function getExecuteFn(subschema) {
+           executor = createBatchingExecutor(executor);
+         }
+         */
+-        const transformationContext = {};
+-        const transformedRequest = applyRequestTransforms(originalRequest, delegationContext, transformationContext, subschema.transforms);
+-        const cachedTransfomedDocumentNode = transformedDocumentNodeCache.get(originalRequest.document);
++        let transformationContext = {
++            contextMap: new WeakMap(),
++        };
++        const key = print(originalRequest.document) +
++            '@' +
++            JSON.stringify(originalRequest.variables || []);
++        let transformedRequest = {
++            ...originalRequest,
++        };
++        const cachedTransfomedDocumentNode = transformedDocumentNodeCache.get(key);
+         if (cachedTransfomedDocumentNode) {
+-            transformedRequest.document = cachedTransfomedDocumentNode;
++            transformedRequest.document = cachedTransfomedDocumentNode.document;
++            transformationContext = cachedTransfomedDocumentNode.transformationContext;
+         }
+         else {
+-            transformedDocumentNodeCache.set(originalRequest.document, transformedRequest.document);
++            transformedRequest = applyRequestTransforms(originalRequest,
++                // @ts-ignore
++                delegationContext, transformationContext, subschema.transforms);
++            transformedDocumentNodeCache.set(key, {
++                document: transformedRequest.document,
++                transformationContext,
++            });
+         }
+         return mapMaybePromise(executor(transformedRequest), function handleResult(originalResult) {
+             if (isAsyncIterable(originalResult)) {
+-                return mapAsyncIterator(originalResult, singleResult => applyResultTransforms(singleResult, delegationContext, transformationContext, subschema.transforms));
++                return mapAsyncIterator(originalResult, singleResult => applyResultTransforms(singleResult,
++                    // @ts-ignore
++                    delegationContext, transformationContext, subschema.transforms));
+             }
+-            const transformedResult = applyResultTransforms(originalResult, delegationContext, transformationContext, subschema.transforms);
++            const transformedResult = applyResultTransforms(originalResult,
++                // @ts-ignore
++                delegationContext, transformationContext, subschema.transforms);
+             return transformedResult;
+         });
+     };
+@@ -148,14 +166,10 @@ export function useSubschema(subschema) {
+             setSchema(subschema.transformedSchema);
+         },
+         onExecute({ setExecuteFn }) {
+-            setExecuteFn(
+-            // @ts-expect-error the typed execution args dont match regular execution types
+-            executeFn);
++            setExecuteFn(executeFn);
+         },
+         onSubscribe({ setSubscribeFn }) {
+-            setSubscribeFn(
+-            // @ts-expect-error the typed execution args dont match regular execution types
+-            executeFn);
++            setSubscribeFn(executeFn);
+         },
+     };
+     return plugin;

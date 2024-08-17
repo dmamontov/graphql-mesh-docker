@@ -1,0 +1,7 @@
+.git
+.gitattributes
+.gitignore
+README.md
+node_modules
+.mesh
+.idea
