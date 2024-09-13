@@ -922,15 +922,16 @@
     "@graphql-mesh/types" "^0.97.5"
     graphql "*"
 
-"@dmamontov/graphql-mesh-grpc-pool-handler@1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@dmamontov/graphql-mesh-grpc-pool-handler/-/graphql-mesh-grpc-pool-handler-1.0.3.tgz#df8af4e64373a6e8e869c3fef0a4ee6b5f724e96"
-  integrity sha512-R8JV4CmT9cREIP0BggkQSDlxODza7CXqcVQ7t1CboNcRSGRisY32PZfhi0btQ1cuT5FC//LCsO/sSOZkG8+evA==
+"@dmamontov/graphql-mesh-grpc-pool-handler@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@dmamontov/graphql-mesh-grpc-pool-handler/-/graphql-mesh-grpc-pool-handler-1.1.0.tgz#679bfa3c8bdf28813e1b2af702a760aa64afb674"
+  integrity sha512-OqU87mjhuPEE2l03Mqs+CTjFf0UiifdYtrzKXLrFkjOTFWGltMq4AjOKzfOCBymCtRtlewJXZ4/N33VZ7SN+5Q==
   dependencies:
     "@ardatan/grpc-reflection-js" "^0.0.2"
     "@graphql-mesh/cross-helpers" "^0.4.2"
     "@graphql-mesh/store" "^0.98.4"
-    "@graphql-mesh/string-interpolation" "^0.5.3"
+    "@graphql-mesh/string-interpolation" "^0.5.5"
+    "@graphql-mesh/transport-common" "^0.6.1"
     "@graphql-mesh/types" "^0.98.4"
     "@graphql-mesh/utils" "^0.98.4"
     "@graphql-tools/utils" "^10.1.1"
@@ -940,7 +941,7 @@
     generic-pool "^3.9.0"
     globby "^11.1.0"
     graphql "*"
-    graphql-compose "^9.0.10"
+    graphql-compose "^9.0.11"
     graphql-scalars "^1.22.4"
     lodash.get "^4.4.2"
     lodash.has "^4.5.2"
@@ -1021,10 +1022,10 @@
     graphql "*"
     graphql-yoga "^5.1.1"
 
-"@dmamontov/graphql-mesh-prometheus-plugin@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@dmamontov/graphql-mesh-prometheus-plugin/-/graphql-mesh-prometheus-plugin-1.0.1.tgz#300da5fe98e8203c2bceebf28590b98556116f76"
-  integrity sha512-/V8Koorobd6rMWeamVjsSUyS6ZKs1QNlblazR9lYgTKlwe+9bluaDUKmx3+n2V9Q4TohG37OSQT3Jzy/LwpMhQ==
+"@dmamontov/graphql-mesh-prometheus-plugin@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@dmamontov/graphql-mesh-prometheus-plugin/-/graphql-mesh-prometheus-plugin-1.1.0.tgz#4c6db047f2372a7653917c9e7a51f44ac0dcdc67"
+  integrity sha512-cLr7fA84gK//Di2Bqm9j41a6hgEANogmu0jMxgYa835iTnGak10eqopqeI/W/OPoTYiAr/OvfuW1MhkFwylhEg==
   dependencies:
     "@envelop/core" "^5.0.0"
     "@graphql-mesh/plugin-prometheus" "^0.98.9"
@@ -6010,13 +6011,6 @@ graphql-compose@9.0.11, graphql-compose@^9.0.11:
   version "9.0.11"
   resolved "https://registry.yarnpkg.com/graphql-compose/-/graphql-compose-9.0.11.tgz#c3b5a3378b62be0deb9ea43d147b756010f6d611"
   integrity sha512-p3+8p2lo7wel24IQwGIhwVGOnCJ3hfBno+x8CE7G4ZLaC4u5G2g6h1Mm8O5iJPTD0C+Q/WxxDqSL2qs8VOf5mg==
-  dependencies:
-    graphql-type-json "0.3.2"
-
-graphql-compose@^9.0.10:
-  version "9.0.10"
-  resolved "https://registry.yarnpkg.com/graphql-compose/-/graphql-compose-9.0.10.tgz#1e870166deb1785761865fe742dea0601d2c77f2"
-  integrity sha512-UsVoxfi2+c8WbHl2pEB+teoRRZoY4mbWBoijeLDGpAZBSPChnqtSRjp+T9UcouLCwGr5ooNyOQLoI3OVzU1bPQ==
   dependencies:
     graphql-type-json "0.3.2"
 
