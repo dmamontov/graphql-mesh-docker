@@ -1,5 +1,5 @@
 diff --git a/node_modules/@graphql-mesh/runtime/cjs/useSubschema.js b/node_modules/@graphql-mesh/runtime/cjs/useSubschema.js
-index 2bc7252..92fc8ea 100644
+index 2bc7252..cdfa9cb 100644
 --- a/node_modules/@graphql-mesh/runtime/cjs/useSubschema.js
 +++ b/node_modules/@graphql-mesh/runtime/cjs/useSubschema.js
 @@ -1,6 +1,6 @@
@@ -19,7 +19,7 @@ index 2bc7252..92fc8ea 100644
      return function subschemaExecute(args) {
          const originalRequest = {
              document: args.document,
-@@ -118,20 +118,38 @@ function getExecuteFn(subschema) {
+@@ -118,20 +118,40 @@ function getExecuteFn(subschema) {
            executor = createBatchingExecutor(executor);
          }
          */
@@ -39,6 +39,7 @@ index 2bc7252..92fc8ea 100644
          if (cachedTransfomedDocumentNode) {
 -            transformedRequest.document = cachedTransfomedDocumentNode;
 +            transformedRequest.document = cachedTransfomedDocumentNode.document;
++            transformedRequest.variables = cachedTransfomedDocumentNode.variables;
 +            transformationContext = cachedTransfomedDocumentNode.transformationContext;
          }
          else {
@@ -48,6 +49,7 @@ index 2bc7252..92fc8ea 100644
 +                delegationContext, transformationContext, subschema.transforms);
 +            transformedDocumentNodeCache.set(key, {
 +                document: transformedRequest.document,
++                variables: transformedRequest.variables,
 +                transformationContext,
 +            });
          }
@@ -65,7 +67,7 @@ index 2bc7252..92fc8ea 100644
              return transformedResult;
          });
      };
-@@ -151,15 +169,12 @@ function useSubschema(subschema) {
+@@ -151,15 +171,12 @@ function useSubschema(subschema) {
              setSchema(subschema.transformedSchema);
          },
          onExecute({ setExecuteFn }) {
