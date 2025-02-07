@@ -26,7 +26,7 @@
     "@dmamontov/graphql-mesh-prune-config-transform": "1.1.1",
     "@dmamontov/graphql-mesh-public-schema-plugin": "1.0.4",
     "@dmamontov/graphql-mesh-replace-config-transform": "1.1.5",
-    "@dmamontov/graphql-mesh-resolve-to-by-delegate-transform": "1.1.3",
+    "@dmamontov/graphql-mesh-resolve-to-by-delegate-transform": "1.1.4",
     "@dmamontov/graphql-mesh-response-cache-plugin": "1.0.5",
     "@dmamontov/graphql-mesh-type-defs-transform": "1.0.2",
     "@dmamontov/graphql-mesh-x-api-key-auth-plugin": "1.1.0",

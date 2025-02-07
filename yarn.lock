@@ -1072,10 +1072,10 @@
     graphql "*"
     graphql-scalars "^1.23.0"
 
-"@dmamontov/graphql-mesh-resolve-to-by-delegate-transform@1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@dmamontov/graphql-mesh-resolve-to-by-delegate-transform/-/graphql-mesh-resolve-to-by-delegate-transform-1.1.3.tgz#aa71f1b888afce8ea3caa6267bbcf77eaa70f5c8"
-  integrity sha512-BtrFFAsyupEdAKuOZT51N4Ufz/Cj0heHkB9GIY78Rmv77B3eRIJBIdMN8IVLzFRfN0pWyy5YYsGPzWkzfCvk4g==
+"@dmamontov/graphql-mesh-resolve-to-by-delegate-transform@1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@dmamontov/graphql-mesh-resolve-to-by-delegate-transform/-/graphql-mesh-resolve-to-by-delegate-transform-1.1.4.tgz#b9382bc814d806eaf618f6dccda332c83e131723"
+  integrity sha512-w+MraVC31hiWVB9gNiSUfTQ3LlaBAB9+18vfZ2i0RRYAzX+cJGF0LGHpKmEh8xipDjhDET2foY/xKOq3Qz9lyA==
   dependencies:
     "@graphql-codegen/visitor-plugin-common" "^5.1.0"
     "@graphql-mesh/string-interpolation" "^0.5.4"
