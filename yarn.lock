@@ -862,10 +862,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@dmamontov/graphql-mesh-audit-log-plugin@1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@dmamontov/graphql-mesh-audit-log-plugin/-/graphql-mesh-audit-log-plugin-1.0.3.tgz#99315c6b86d4c62ce124002ba7e583eb2c789d9f"
-  integrity sha512-r2t5BAsy9oEJ/b4V7j/HD9G0W65h4rztWvkqT6QUB9i67UueWzZl0qhd/XwGBNPs5jAwH6P9BaOY7vZxEHhZDw==
+"@dmamontov/graphql-mesh-audit-log-plugin@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@dmamontov/graphql-mesh-audit-log-plugin/-/graphql-mesh-audit-log-plugin-1.0.4.tgz#9ac88ca75ea2eb6bc03ae9beb55458c6b3fd09d1"
+  integrity sha512-Ohy71WYVD1C2n9lSEThWJeximBHt6fGYJlBqgjOxu2EEHvf+2CZLqm9Z155eHbQFtA2W3UT0E+7auHFt0PsiVw==
   dependencies:
     "@envelop/core" "^5.0.0"
     "@graphql-mesh/string-interpolation" "^0.5.3"
@@ -1095,10 +1095,10 @@
     lodash.topath "^4.5.2"
     lodash.uniqby "^4.7.0"
 
-"@dmamontov/graphql-mesh-response-cache-plugin@1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@dmamontov/graphql-mesh-response-cache-plugin/-/graphql-mesh-response-cache-plugin-1.0.5.tgz#531ba5bbac21e318e21039a0131efa9b6f5e4a89"
-  integrity sha512-jlDiNHbJYFSJCCTr25be7sP93C1lChoWZjPTR/zBp3yfQTjQSwAbFg85wBclRAWBlqS6hdBZU42YA7U0tyBZWw==
+"@dmamontov/graphql-mesh-response-cache-plugin@1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@dmamontov/graphql-mesh-response-cache-plugin/-/graphql-mesh-response-cache-plugin-1.0.6.tgz#8ca0f69a6646765a014c9324b2e0dd8d34760aef"
+  integrity sha512-F1p+Vhc5YCjy4sJ2oieuzqO3B9HUPSRc3mBNJyJ+CLZuWCj6VgPy7UZc4pGGh9NuTXJmbXKslwwTuUzBj1+XXQ==
   dependencies:
     "@envelop/core" "^5.0.0"
     "@graphql-mesh/string-interpolation" "^0.5.3"

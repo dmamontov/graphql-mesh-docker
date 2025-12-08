@@ -1,6 +1,6 @@
 {
   "name": "graphql-mesh",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "private": true,
   "scripts": {
     "build": "mesh build",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@apollo/gateway": "2.8.4",
-    "@dmamontov/graphql-mesh-audit-log-plugin": "1.0.3",
+    "@dmamontov/graphql-mesh-audit-log-plugin": "1.0.4",
     "@dmamontov/graphql-mesh-cache-utils-plugin": "1.0.1",
     "@dmamontov/graphql-mesh-constraint-plugin": "1.0.4",
     "@dmamontov/graphql-mesh-errors-formatter-plugin": "1.0.5",
@@ -27,7 +27,7 @@
     "@dmamontov/graphql-mesh-public-schema-plugin": "1.0.4",
     "@dmamontov/graphql-mesh-replace-config-transform": "1.1.5",
     "@dmamontov/graphql-mesh-resolve-to-by-delegate-transform": "1.1.6",
-    "@dmamontov/graphql-mesh-response-cache-plugin": "1.0.5",
+    "@dmamontov/graphql-mesh-response-cache-plugin": "1.0.6",
     "@dmamontov/graphql-mesh-type-defs-transform": "1.0.2",
     "@dmamontov/graphql-mesh-x-api-key-auth-plugin": "1.1.0",
     "@envelop/graphql-jit": "8.0.3",
