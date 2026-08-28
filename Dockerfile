@@ -18,6 +18,12 @@ ENV YARN_CACHE_FOLDER=/root/.yarn \
 
 WORKDIR /work
 
+RUN sed -i 's|deb.debian.org/debian|archive.debian.org/debian|g' /etc/apt/sources.list \
+ && sed -i '/security.debian.org/d' /etc/apt/sources.list \
+ && apt-get update \
+ && apt-get install -y --no-install-recommends ca-certificates \
+ && rm -rf /var/lib/apt/lists/* \
+
 COPY . .
 COPY ./docker-cmd.sh /usr/bin/docker-cmd.sh
 
