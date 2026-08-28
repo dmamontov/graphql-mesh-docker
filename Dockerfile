@@ -29,6 +29,12 @@ RUN cp /work/node_modules/@dmamontov/graphql-mesh-resolve-to-by-delegate-transfo
     &&  cp /work/node_modules/@dmamontov/graphql-mesh-public-schema-plugin/esm/private-directive.graphql /work/directives \
     &&  cp /work/node_modules/@dmamontov/graphql-mesh-constraint-plugin/esm/constraint-directive.graphql /work/directives
 
+RUN sed -i 's|deb.debian.org/debian|archive.debian.org/debian|g' /etc/apt/sources.list \
+ && sed -i '/security.debian.org/d' /etc/apt/sources.list \
+ && apt-get update \
+ && apt-get install -y --no-install-recommends ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+
 EXPOSE 8000
 
 CMD if [ -f "/usr/bin/docker-cmd.sh" ]; then sh /usr/bin/docker-cmd.sh; fi && yarn dev
